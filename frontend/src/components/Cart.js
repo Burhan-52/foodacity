@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { additem } from "../utils/store/cartSlice";
 import useSaveProduct from "../utils/useSaveProduct";
 import Address from "./Address";
-import emptyCartLogo from '../assests/cart.png'
+import emptyCartLogo from '../assests/cart.jpg'
 
 const Cart = () => {
   const dispatch = useDispatch();
