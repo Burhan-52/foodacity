@@ -1,0 +1,4 @@
+Parcel --> Bundler
+Config Driven UI --> Change UI according to the data
+Shimmer --> for loading 
+react-router-dom --> to link aou page with with other page

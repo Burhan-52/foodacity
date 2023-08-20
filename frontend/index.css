@@ -1,0 +1,800 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 10px 5px;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(238, 239, 237);
+    box-shadow: 0 3px 5px -3px #000;
+}
+
+.title-img {
+    width: 120px;
+    height: 50px;
+}
+
+.img {
+    width: 3em;
+    height: 2.5em;
+}
+
+.search {
+    width: 20em;
+    height: 2.3em;
+}
+
+input::placeholder {
+    font-weight: bold;
+}
+
+input {
+    text-indent: 12px;
+    width: 200px;
+}
+
+.input {
+    text-indent: 12px;
+    padding: 10px;
+    width: 200px;
+    margin: 10px;
+}
+
+.dropdown-container {
+    background-color: white;
+    position: absolute;
+    left: 180px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    width: 19.3em;
+    margin-top: 2px;
+}
+
+.dropdown-row {
+    flex-direction: column;
+    cursor: pointer;
+    text-align: start;
+    margin: 7px 10px;
+}
+
+.dropdown-row:empty {
+    border: none;
+}
+
+.submit-container {
+    display: flex;
+    justify-content: center;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.search-btn {
+    width: 3em;
+    height: 2.6em;
+    cursor: pointer;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+
+.search-img {
+    width: 20px;
+    height: 20px;
+}
+
+.search-container {
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.nav-item-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    list-style: none;
+    text-decoration: none;
+}
+
+li {
+    margin: 0px 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container-card {
+    margin: 1em;
+    width: 200px;
+    cursor: pointer;
+}
+
+.card {
+    padding: 10px;
+}
+
+.container-card:hover {
+    transform: scale(1.05);
+}
+
+.img-min {
+    position: relative;
+}
+
+.minutes {
+    position: absolute;
+    bottom: 15px;
+    margin-left: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 2px;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.main-img {
+    width: 200px;
+}
+
+.name {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    color: black;
+}
+
+.cuisines {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11px;
+    color: #686b78;
+}
+
+.offer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    padding: 0px 7px;
+    background-color: rgb(36, 150, 63);
+    width: 25px;
+    height: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 10px;
+    color: white;
+}
+
+.star {
+    margin-left: 3px;
+    width: 10px;
+}
+
+.offer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 11px;
+    color: black;
+}
+
+.component-card {
+    margin-top: 3px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.log {
+    margin: 5px;
+    width: 50px;
+    height: 2.5em;
+    color: black;
+    cursor: pointer;
+}
+
+.shimmer-container {
+    margin: 1em 0px 1em 0px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px 25px;
+    justify-content: center;
+}
+
+.shimmer-card {
+    flex-basis: 220px;
+    padding: 10px 0px;
+}
+
+.shimmer-title {
+    width: 120px;
+    margin-top: 5px;
+    padding: 2px;
+    margin-left: 9px;
+}
+
+.shimmer-tags {
+    width: 160px;
+    margin-top: 5px;
+    padding: 2px;
+    margin-left: 9px;
+}
+
+.shimmer-details {
+    width: 200px;
+    margin-top: 5px;
+    padding: 2px;
+    margin-left: 9px;
+}
+
+.shimmer-container .shimmer-img {
+    width: 200px;
+    height: 120px;
+    margin-left: 9px;
+}
+
+.stroke {
+    height: 15px;
+    background: #777;
+}
+
+.animate {
+    animation: shimmer 3s;
+    animation-iteration-count: infinite;
+    background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+    background-size: 1000px 100%;
+}
+
+.restaurantnotfound {
+    margin: 10px 0px 10px 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    text-align: center;
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+}
+
+.errisfound {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40;
+}
+
+.err-btn {
+    margin-top: 5px;
+    width: 12em;
+    height: 3em;
+    background-color: #d7d4d4;
+    color: black;
+    border-radius: 10px;
+    border-style: none;
+    cursor: pointer;
+}
+
+.carsel-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    background-color: #939499;
+}
+
+.carsel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.carsel-img {
+    width: 250px;
+    height: 200px;
+    border-radius: 5px;
+}
+
+.carsel-restaurant-name {
+    font-size: large;
+    font-weight: bold;
+}
+
+.carsel-restaurant-cuisines {
+    margin-top: 5px;
+}
+
+.carsel-restaurant-star-minutes {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+span {
+    margin: 0px 50px;
+}
+
+.clock {
+    display: flex;
+    margin-right: 10px;
+}
+
+.restaurant-menu {
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.restaurant-menu-img {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.cart-button {
+    display: flex;
+    padding: 3px 0px;
+    color: #60b246;
+    justify-content: space-around;
+    border: 1px solid gray;
+    width: 85px;
+}
+
+.btn-add-remove {
+    cursor: pointer;
+}
+
+.restaurant-menu-name {
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+}
+
+.restaurant-menu-price {
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    font-size: small;
+}
+
+.instamart-container {
+    margin: 10px;
+    border: 1px solid black;
+}
+
+.quantity-container {
+    display: flex;
+    border: 1px solid lightgrey;
+    justify-content: center;
+}
+
+.quantity-btn {
+    all: unset;
+    color: #60b246;
+    cursor: pointer;
+    padding: 3px 10px;
+}
+
+.show-quantity {
+    padding: 3px 0px;
+}
+
+.divider {
+    border-bottom: 1px solid #c2c1c1;
+    margin: 10px 150px;
+}
+
+.popup-main-container {
+    background-color: #6fb859;
+    margin: 10px 330px;
+    padding: 4px;
+    border-radius: 5px;
+
+}
+
+.popup-container {
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+}
+
+.items-price {
+    display: flex;
+}
+
+.cart-divider {
+    border-bottom: 3px solid #c2c1c1;
+    width: 95%;
+    margin: 10px;
+}
+
+.pay {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+
+.recommended-card {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+    width: 29%;
+    display: flex;
+    justify-content: center;
+}
+
+.recommended {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: large;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+    width: 62%;
+    display: flex;
+    justify-content: center;
+}
+
+.restaurant-summary .shimmer-img {
+    height: 144px;
+    width: 230px;
+}
+
+.shimmer-menu-card {
+    display: flex;
+    justify-content: space-evenly;
+    width: 848px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-color: #d3d5df;
+    box-shadow: 0 4px 7px 0 rgb(218 220 230 / 60%);
+}
+
+.shimmer-item-details {
+    width: 438px;
+}
+
+.shimmer-img-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 118px;
+    height: 150px;
+}
+
+.shimmer-img-wrapper .shimmer-img {
+    width: 118px;
+    height: 96px;
+}
+
+.shimmer-img-wrapper .shimmer-btn {
+    width: 94px;
+    height: 34px;
+    margin-top: 10px;
+}
+
+.shimmer-w60 {
+    width: 60%;
+    margin-top: 10px;
+}
+
+.shimmer-w40 {
+    width: 40%;
+    margin-top: 10px;
+}
+
+.shimmer-w20 {
+    width: 20%;
+    margin-top: 4px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.input-login {
+    width: 95%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #757474;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #625f5f;
+}
+
+.carousel-container {
+    padding: 20px;
+}
+
+.carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.carousel-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.carousel-restaurant-name {
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+}
+
+.carousel-restaurant-cuisines {
+    font-size: 16px;
+    text-align: center;
+}
+
+.carousel-restaurant-star-minutes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 30px;
+}
+
+.rating img {
+    width: 12px;
+    height: 12px;
+    margin-left: 5px;
+}
+
+.clock img {
+    width: 12px;
+    height: 12px;
+}
+
+.recommended {
+    font-weight: bold;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* .menu-container {
+    padding: 20px;
+} */
+
+.menu-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.restaurant-menu-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 20px 0px;
+}
+
+.cart-main-container {
+    display: flex;
+    padding: 20px 10px;
+}
+
+.first-conatiner {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-btn {
+    padding: 10px 75px;
+    color: black;
+    cursor: pointer;
+}
+.margin{
+    margin: 10px 0px;
+}
+.second-conatiner {
+    width: 50%;
+}
+
+.cart-name-price {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 5px;
+    padding: 0px 20px;
+    /* flex-direction: row; */
+}
+
+.cart-name {
+    width: 250px;
+}
+
+/* Your other styles */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* footer {
+    margin-top: auto;
+} */
+.empty-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Ensure at least viewport height */
+   
+}
+
+.cart-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    height: 40px;
+    background-color: #eeefed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .cart-main-container{
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+    }
+    .first-conatiner {
+        width:100%;
+    }
+
+    .second-conatiner {
+        width: 100%;
+    }
+    
+
+    .cart-btn {
+        padding: 10px 40px;
+    }
+
+    .restaurant-menu-content {
+        width: 100%;
+    }
+
+    .recommended-card {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .shimmer-menu-card {
+        width: 93%;
+        display: flex;
+        justify-content: center;
+    }
+   
+
+
+    .carousel {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .carousel-img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .carousel-restaurant-name {
+        font-size: 18px;
+    }
+
+    .carousel-restaurant-cuisines {
+        font-size: 14px;
+    }
+
+    .carousel-restaurant-star-minutes {
+        font-size: 12px;
+    }
+
+    .recommended {
+        width: 100%;
+
+        font-size: 16px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .menu-items {
+        justify-content: center;
+    }
+
+    .restaurant-menu-container {
+        width: 100%;
+    }
+
+    .restaurant-menu {
+        width: 90%;
+    }
+
+    .popup-main-container {
+        margin: 10px;
+
+    }
+
+
+}
