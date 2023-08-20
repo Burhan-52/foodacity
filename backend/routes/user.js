@@ -36,8 +36,8 @@ router.post('/signup', async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             maxAge: 86400,
-            // sameSite: "None",
-            // secure: true
+            sameSite: "None",
+            secure: true
         }).status(201).json({
             success: true,
             newUser,
@@ -73,8 +73,8 @@ router.post('/login', async (req, res) => {
         res.cookie('token', token, {
             httpOnly: true,
             maxAge: 86400,
-            // sameSite: "None",
-            // secure: true
+            sameSite: "None",
+            secure: true
 
         }).status(201).json({
             success: true,
