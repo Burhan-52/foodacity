@@ -6,7 +6,7 @@ export const shimmer_card_unit = 10;
 
 export const restaurant_card_url = "https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.1844709&lng=73.0235553&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
-export const server = "http://localhost:8000"
+export const server = "https://foodacity-backend.onrender.com"
 
 export const help_Question = ["Can I edit my order?",
     " I want to cancel my order",
