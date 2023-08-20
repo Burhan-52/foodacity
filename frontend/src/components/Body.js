@@ -79,7 +79,7 @@ const Body = () => {
 
   return (
     <>
-      <div style={{ display: "flex",flexWrap:"wrap" }}>
+      <div className="search-filter-container">
         <SearchBar setsearchFilteredTxt={setsearchFilteredTxt} />
         <RestaurantFilter setsearchFilteredTxt={setsearchFilteredTxt} />
       </div>

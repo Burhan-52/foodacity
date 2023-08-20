@@ -292,6 +292,10 @@ a {
     cursor: pointer;
 }
 
+.search-filter-container{
+    display: flex;
+}
+
 .carsel-container {
     display: flex;
     align-items: center;
@@ -794,6 +798,10 @@ footer {
     .popup-main-container {
         margin: 10px;
 
+    }
+    .search-filter-container{
+        display: flex;
+        flex-wrap: wrap;
     }
 
 
