@@ -48,7 +48,7 @@ router.post('/paymentverify', isAuthenticated, async (req, res) => {
         });
 
         res.redirect(
-            `http://localhost:1234/paymentsuccess?reference=${razorpay_payment_id}`
+            `https://foodacity-backend.onrender.com/paymentsuccess?reference=${razorpay_payment_id}`
         );
     } else {
         res.status(400).json({
