@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from "../assests/food.png";
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import '../../Style/header.css';
 import { toast } from 'react-hot-toast';
-import { authFailure, logout } from '../utils/store/authSlice';
-import { additem, emptyCart } from '../utils/store/cartSlice';
-import { server } from '../../config';
+import { authSuccess, logout } from '../utils/store/authSlice';
+import { emptyCart } from '../utils/store/cartSlice';
 
 const Title = () => {
   return <img data-testid="logo" className="title-img" src={Logo} alt="Logo" />;
@@ -17,7 +16,9 @@ const Headercomponenet = () => {
 
   const cartitem = useSelector((store) => store.cart.items);
 
-  const auth = useSelector((store) => store.auth.isauth);
+  const userStore = useSelector((store) => store.auth.user);
+  
+  const token = localStorage.getItem("authToken")
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -25,35 +26,26 @@ const Headercomponenet = () => {
 
   const dispatch = useDispatch()
 
-  const handleLogout = async (e) => {
-    try {
-      const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include'
-      };
+  const handleLogout = (e) => {
+    localStorage.removeItem("authToken")
+    localStorage.removeItem("user")
+    toast.success("logout Successfully");
+    dispatch(emptyCart())
+    dispatch(logout())
+    navigate("/")
 
-      const response = await fetch(`${server}/api/logout`, requestOptions);
-      const data = await response.json();
-      
-      if (data.success) {
-        toast.success(data.message);
-        dispatch(emptyCart())
-        dispatch(logout())
-        navigate("/")
-
-      } else {
-        toast.error(data.error);
-      }
-    } catch (error) {
-      console.log(error);
-      dispatch(authFailure(error))
-    }
-  };
+  }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  useEffect(() => {
+    if (!userStore) {
+      const user = JSON.parse(localStorage.getItem("user"))
+      dispatch(authSuccess(user))
+    }
+  }, [dispatch, userStore])
 
   return (
     <div className="container">
@@ -80,12 +72,12 @@ const Headercomponenet = () => {
             </li>
           </ul>
           <div className="login-btn">
-            {auth ? (
-             
-                <button onClick={handleLogout} className="log">
-                  Logout
-                </button>
-             
+            {token ? (
+
+              <button onClick={handleLogout} className="log">
+                Logout
+              </button>
+
             ) : (
               <Link to="/login">
                 <button data-testid="login" className="log">

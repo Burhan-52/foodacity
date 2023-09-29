@@ -34,6 +34,12 @@ export const filterDataByCuisines = (data, selectedCuisines) => {
   });
 };
 
+export const handleImageChange = async (e) => {
+  const file = e.target.files[0];
+  const base64 = await convertToBase64(file);
+  setSelectedImage({ myFile: base64 })
+};
+
 export function convertToBase64(file) {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader();

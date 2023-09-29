@@ -16,6 +16,8 @@ const Body = () => {
 
   const auth = useSelector((store) => store.auth.isauth)
 
+  const user = useSelector((store) => store.auth.user);
+
   const cartItems = useSelector((store) => store.cart.items);
 
   const dispatch = useDispatch()
@@ -28,7 +30,7 @@ const Body = () => {
         credentials: "include",
       };
   
-      const response = await fetch(`${server}/api/order`, requestOptions);
+      const response = await fetch(`${server}/api/order/${user._id}`, requestOptions);
       const data = await response.json();
   
       if (data.success && Array.isArray(data.products)) {

@@ -15,8 +15,6 @@ test('checking for logo is there or not in header ', () => {
     const logo = header.getByTestId("logo")
     expect(logo.src).toBe("http://localhost/dummy.png")
 
-    
-    console.log(header)
 })
 
 test('checking for cart is intially is 0 ', () => {
@@ -43,6 +41,4 @@ test('checking for Login is there or not', () => {
     )
     const login = header.getByTestId("login")
     expect(login.innerHTML).toBe("Login")
-
-    console.log(header)
 })

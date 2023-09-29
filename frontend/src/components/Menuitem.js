@@ -1,17 +1,16 @@
 import { Img_Url } from "../../config";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ItemQuantity from "./ItemQuantity";
 import useGetProduct from "../utils/useGetProduct";
 
 const Menuitem = (props) => {
 
-    const dispatch = useDispatch();
-
     const [product, getProduct] = useGetProduct(props.item?.card?.info?.name)
 
     useEffect(() => {
-        getProduct();
+        if(localStorage.getItem("authToken")){
+            getProduct();
+        }
     }, []);
 
     return (

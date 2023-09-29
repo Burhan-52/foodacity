@@ -2,13 +2,11 @@ import express from "express";
 import User from "../model/User.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
-import { isAuthenticated } from "../middlewares/auth.js";
 
 const router = express.Router()
 
 router.post('/signup', async (req, res) => {
-    const { name, email, password } = req.body;
-    let { img } = req.body;
+    const { name, email, password, img } = req.body;
 
     try {
         // Check if the email already exists
@@ -33,12 +31,7 @@ router.post('/signup', async (req, res) => {
 
         const token = jwt.sign({ id: newUser._id }, process.env.SECRET_JWT)
 
-        res.cookie('token', token, {
-            httpOnly: true,
-            maxAge: 86400,
-            sameSite: "None",
-            secure: true
-        }).status(201).json({
+        res.status(201).json({
             success: true,
             newUser,
             token,
@@ -70,13 +63,7 @@ router.post('/login', async (req, res) => {
 
         const token = jwt.sign({ id: existingUser._id }, process.env.SECRET_JWT)
 
-        res.cookie('token', token, {
-            httpOnly: true,
-            maxAge: 86400,
-            sameSite: "None",
-            secure: true
-
-        }).status(201).json({
+        res.status(201).json({
             success: true,
             existingUser,
             token,
@@ -134,24 +121,5 @@ router.delete('/deleteuser', async (req, res) => {
         res.status(500).json({ success: false, error: 'Internal server error' });
     }
 });
-
-
-router.post('/logout', isAuthenticated, async (req, res) => {
-    try {
-        res
-            .status(200)
-            .clearCookie('token')
-            .json({
-                success: true,
-                message: 'Logout successful.',
-            });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            error: 'An error occurred while logging out.',
-        });
-    }
-});
-
 
 export default router

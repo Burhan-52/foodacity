@@ -1,14 +1,14 @@
 import express from "express";
 import Address from "../model/Address.js";
-import { isAuthenticated } from "../middlewares/auth.js";
 
 const router = express.Router()
 
-router.post('/address', isAuthenticated, async (req, res) => {
+router.post('/address/:id', async (req, res) => {
     const { address, city, pincode } = req.body
+    const {id} = req.params
 
     const userAddress = await Address.create({
-        user: req.user._id,
+        user: id,
         address,
         city,
         pincode
@@ -23,8 +23,8 @@ router.post('/address', isAuthenticated, async (req, res) => {
 
 })
 
-router.get('/address',isAuthenticated, async (req, res) => {
-    const  id  = req.user._id;
+router.get('/address/:id', async (req, res) => {
+    const  {id}  = req.params
 
     try {
         const address = await Address.find({ user: id });
@@ -43,7 +43,5 @@ router.get('/address',isAuthenticated, async (req, res) => {
         res.status(500).json({ success: false, error: 'Internal server error' });
     }
 });
-
-
 
 export default router

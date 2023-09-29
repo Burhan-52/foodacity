@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 
 function useRestaurantCard() {
+
     const [allrestaurant, setallrestaurant] = useState([]);
+
     const [searchFilteredTxt, setsearchFilteredTxt] = useState([]);
+
     const [suggestion, setsuggestion] = useState([]);
 
     const isMobileView = window.innerWidth <= 800;
@@ -30,7 +33,7 @@ function useRestaurantCard() {
 
     useEffect(() => {
         fetchData();
-    }, [isMobileView]); // Run the effect only on component mount
+    }, [isMobileView]); 
 
     return [allrestaurant, searchFilteredTxt, suggestion, setsearchFilteredTxt];
 }

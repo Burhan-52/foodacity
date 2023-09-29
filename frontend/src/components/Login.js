@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { authFailure, authStart, authSuccess } from '../utils/store/authSlice';
 import '../../Style/login.css';
@@ -15,6 +15,8 @@ const Login = () => {
   const dispatch = useDispatch()
 
   const navigate = useNavigate();
+
+  const user = useSelector((store) => store.auth.user)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -36,7 +38,9 @@ const Login = () => {
 
       if (data.success) {
         toast.success(data.message);
-        dispatch(authSuccess(data.existingUser))
+        dispatch(authSuccess(data))
+        localStorage.setItem('authToken', data.token);
+        localStorage.setItem('user', JSON.stringify(data));
         navigate("/")
       } else {
         toast.error(data.error);

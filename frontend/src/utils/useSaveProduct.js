@@ -2,7 +2,8 @@ import { useSelector } from 'react-redux';
 import { server } from '../../config';
 
 const useSaveProduct = () => {
-    const auth = useSelector((store) => store.auth.user || "");
+
+    const user = useSelector((store) => store.auth.user);
 
     const saveProduct = async (restaurantname, location, name, quantity, price, action) => {
         try {
@@ -21,7 +22,7 @@ const useSaveProduct = () => {
                 }),
             }
 
-            const response = await fetch(`${server}/api/order`, requestOptions);
+            const response = await fetch(`${server}/api/order/${user._id}`, requestOptions);
             const data = await response.json();
            
         } catch (error) {

@@ -6,14 +6,20 @@ import useSaveProduct from "../utils/useSaveProduct";
 import useDeleteProduct from "../utils/useDeleteProduct";
 
 const ItemQuantity = (props) => {
-  const [count, setCount] = useState(0);
-  const [product, getProduct] = useGetProduct(props.item?.card?.info.name);
+  
   const dispatch = useDispatch();
-  const cartItems = useSelector((store) => store.cart.items);
-  const auth = useSelector((store) => store.auth.user || "");
+
   const [deleteproduct] = useDeleteProduct()
 
   const [saveProduct] = useSaveProduct();
+
+  const [count, setCount] = useState(0);
+
+  const [product, getProduct] = useGetProduct(props.item?.card?.info.name);
+
+  const cartItems = useSelector((store) => store.cart.items);
+
+  const auth = useSelector((store) => store.auth.user || "");
 
   const handleAddItem = (productInfo, action) => {
     setCount(count + 1);
@@ -40,7 +46,7 @@ const ItemQuantity = (props) => {
           "Adding items from a different restaurant will clear your cart. Do you want to continue?"
         );
         if (confirmClearCart) {
-         await deleteproduct()
+          await deleteproduct()
           dispatch(emptyCart());
           await saveProduct(
 
@@ -64,7 +70,7 @@ const ItemQuantity = (props) => {
 
         } else {
           setCount(0)
-          
+
         }
       } else {
         // Save the product to the backend

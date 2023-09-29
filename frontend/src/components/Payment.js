@@ -3,13 +3,16 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export const Payment = () => {
-  const auth = useSelector((store) => store.auth);
-  const cartitem = useSelector((store) => store.cart.items);
-  const navigate = useNavigate();
 
-  if (!auth) {
-    navigate('/login');
-  }
+  const cartitem = useSelector((store) => store.cart.items);
+
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!(localStorage.getItem("authToken"))) {
+      navigate('/login');
+    }
+  }, [])
 
   return (
     <>

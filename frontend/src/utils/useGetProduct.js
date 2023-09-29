@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import cartSlice, { additem } from "../utils/store/cartSlice";
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { server } from "../../config";
 
 const useGetProduct = (productName) => {
+
   const [product, setProduct] = useState({});
-  const dispatch = useDispatch();
+
+  const user = useSelector((store) => store.auth.user);
 
   const getProduct = async () => {
     try {
@@ -16,7 +17,7 @@ const useGetProduct = (productName) => {
       };
 
       const response = await fetch(
-        `${server}/api/order`,
+        `${server}/api/order/${user._id}`,
         requestOptions
       );
       const data = await response.json();

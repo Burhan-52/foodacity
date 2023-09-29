@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import useRestaurantCard from '../utils/useRestaurantCard';
-
 import Search from "../assests/search.png"
 import { filterData } from '../utils/helper';
 
@@ -13,6 +12,7 @@ const SearchBar = ({ setsearchFilteredTxt }) => {
     const onsearch = (search) => {
         setsearchTxt(search)
     }
+    
     return (
         <div style={{width:"100%"}} >
             <div className="search-container">

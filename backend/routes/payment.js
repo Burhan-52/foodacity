@@ -1,14 +1,14 @@
 import express from "express";
-import { isAuthenticated } from "../middlewares/auth.js";
 import { instance } from "../index.js";
 import { Payment } from "../model/Payment.js";
 import crypto from "crypto";
 
 const router = express.Router()
-router.post('/payment', isAuthenticated, async (req, res) => {
+router.post('/payment', async (req, res) => {
     try {
+       
         const options = {
-            amount: Number(req.body.amount * 100),
+            amount: Math.floor(Number(req.body.amount) * 100),
             currency: "INR",
         };
         const order = await instance.orders.create(options);
@@ -26,7 +26,7 @@ router.post('/payment', isAuthenticated, async (req, res) => {
     }
 });
 
-router.post('/paymentverify', isAuthenticated, async (req, res) => {
+router.post('/paymentverify', async (req, res) => {
   
     const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
 

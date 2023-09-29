@@ -5,6 +5,7 @@ const authSlice = createSlice({
     initialState: {
         isauth: false,
         isLoading: false,
+        token: null,
         user: null,
         error: null,
     },
@@ -14,26 +15,34 @@ const authSlice = createSlice({
             state.isLoading = true;
             state.error = null;
         },
-        authSuccess: (state, action) => {
-            const { _id, name, email, img } = action.payload
-            const newItem = { _id, name, email, img };
-            state.user = newItem
-            state.isLoading = false;
-            state.error = null;
-            state.isauth = true
 
+        authSuccess: (state, action) => {
+            if (action.payload && action.payload.existingUser) {
+                const { _id, name, email, img } = action.payload.existingUser;
+                const { token } = action.payload;
+                const newItem = { _id, name, email, img };
+                state.user = newItem;
+                state.isLoading = false;
+                state.error = null;
+                state.isauth = true;
+                state.token = token;
+            }
         },
+
         authFailure: (state, action) => {
             state.isLoading = false;
             state.user = null;
             state.error = action.payload;
-            state.isauth = false
+            state.isauth = false,
+                state.token = null;
         },
+
         logout: (state) => {
             state.user = null;
             state.isLoading = false;
             state.error = null;
-            state.isauth = false
+            state.isauth = false;
+            state.token = null;
         },
     },
 });

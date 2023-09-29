@@ -4,17 +4,15 @@ import { MenuShimmer, Shimmer } from "./Shimmer";
 import Star from "../assests/star.png";
 import Clock from "../assests/clock.png";
 import useRestaurant from "../utils/useRestaurant";
-import { additem } from "../utils/store/cartSlice";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useSelector } from "react-redux";
 import Menuitem from "./Menuitem";
 import ViewCart from "./ViewCart";
 
 const Restaurantmenu = () => {
-  const [count, setcount] = useState(0);
+
   const { id } = useParams();
+
   const [restaurant, resimg] = useRestaurant(id);
-  const dispatch = useDispatch();
 
   const cartitem = useSelector((store) => store.cart.items);
 
@@ -57,7 +55,7 @@ const Restaurantmenu = () => {
           {Object.keys(cartitem).length ? <ViewCart /> : ""}
           <div className="menu-items">
             {restaurant.map((item) => {
-              return <Menuitem key={item.card?.info?.id} item={item} restaurantname={resimg.name} resimg={resimg.areaName}/>;
+              return <Menuitem key={item.card?.info?.id} item={item} restaurantname={resimg.name} resimg={resimg.areaName} />;
             })}
           </div>
         </div>

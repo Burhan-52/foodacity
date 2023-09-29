@@ -5,11 +5,11 @@ import '../../Style/restaurantfilter.css';
 
 const RestaurantFilter = ({ setsearchFilteredTxt }) => {
     const [allrestaurant] = useRestaurantCard();
+
     const [appliedFilters, setAppliedFilters] = useState([]);
 
     const applyFilters = () => {
         let filteredData = allrestaurant;
-
         // Apply the filters in the order you want
         appliedFilters.forEach((filter) => {
             switch (filter) {

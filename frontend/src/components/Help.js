@@ -2,8 +2,6 @@ import { useState } from "react"
 import { help_Question, help_Answer } from "../../config"
 
 const Section = ({  isvisible, setisvisible, item, Answer }) => {
-
-
     return (
         <div className="instamart-container">
             <h3 className="about">{item}</h3>

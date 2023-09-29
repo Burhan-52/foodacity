@@ -11,7 +11,9 @@ const Address = () => {
 
     const carttotalcount = useSelector((store) => store.cart.totalItemsCount);
 
-    const [checkoutHandler] = usePayment()
+    const user = useSelector((store) => store.auth.user);
+
+    const [checkoutHandler] = usePayment(carttotalcount)
 
     const [getaddress, setGetAddress] = useState([]);
 
@@ -27,7 +29,7 @@ const Address = () => {
                 credentials: 'include',
             };
 
-            const response = await fetch(`${server}/api/address`, requestOptions);
+            const response = await fetch(`${server}/api/address/${user._id}`, requestOptions);
             const data = await response.json();
             const addresses = data.address && Array.isArray(data.address) ? data.address : [];
             setGetAddress(addresses);
@@ -56,7 +58,9 @@ const Address = () => {
                     <button className="cart-btn margin" onClick={() => setDeliver(prev => !prev)}>Deliver Here {deliver ? "✔" : ""}</button>
                     {deliver && <span >change</span>}
                     <div>
-                        <Link to={'/payment'}><button className="cart-btn margin" disabled={!deliver} onClick={() => checkoutHandler(carttotalcount)}>proceed to payment</button></Link>
+                        <Link to={'/payment'}>
+                            <button className="cart-btn margin" disabled={!deliver} onClick={() => checkoutHandler(carttotalcount)}>proceed to payment</button>
+                        </Link>
                     </div>
                 </div>
             ) : (

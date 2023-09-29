@@ -8,7 +8,9 @@ import emptyCartLogo from '../assests/cart.jpg'
 
 const Cart = () => {
   const dispatch = useDispatch();
+
   const cartitem = useSelector((store) => store.cart.items);
+
   const auth = useSelector((store) => store.auth.isauth);
 
   const [totalpay, settotalpay] = useState(0);

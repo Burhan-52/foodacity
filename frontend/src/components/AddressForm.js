@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
 import { toast } from 'react-hot-toast';
 import { server } from '../../config';
+import { useSelector } from 'react-redux';
 
 const AddressForm = () => {
+
+    const user = useSelector((store) => store.auth.user);
 
     const [useraddress, setUserAddress] = useState({
         address: '',
@@ -24,7 +27,7 @@ const AddressForm = () => {
                 }),
             };
 
-            const response = await fetch(`${server}/api/address`, requestOptions);
+            const response = await fetch(`${server}/api/address/${user._id}`, requestOptions);
             const data = await response.json();
 
             if (data.success) {

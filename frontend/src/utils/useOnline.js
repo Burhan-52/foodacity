@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 const useOnline = () => {
     const [isonline, setisonline] = useState(true)
+    
     useEffect(() => {
         function handleOnline() {
             setisonline(true)

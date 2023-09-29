@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { authFailure, authStart, authSuccess } from '../utils/store/authSlice';
-import '../../Style/signup.css'
-import { convertToBase64 } from '../utils/helper';
+import { convertToBase64, handleImageChange } from '../utils/helper';
 import { server } from '../../config';
+import '../../Style/signup.css'
 
 const Signup = () => {
 
@@ -55,12 +55,6 @@ const Signup = () => {
         }
 
     }
-
-    const handleImageChange = async (e) => {
-        const file = e.target.files[0];
-        const base64 = await convertToBase64(file);
-        setSelectedImage({ myFile: base64 })
-    };
 
     return (
         <div className="signup-container">

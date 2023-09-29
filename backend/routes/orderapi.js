@@ -1,15 +1,14 @@
 import express from "express";
 import Product from "../model/Order.js";
-import { isAuthenticated } from "../middlewares/auth.js";
 
 const router = express.Router()
 
-router.post("/order", isAuthenticated, async (req, res) => {
+router.post("/order/:id", async (req, res) => {
     const { restaurantname, location, productname, quantity, price, action } = req.body;
-    
+    const { id } = req.params
     try {
         // Check if the user is adding an item from a different restaurant
-        const existingItems = await Product.find({ user: req.user._id });
+        const existingItems = await Product.find({ user: id });
         const differentRestaurant = existingItems.some(item => item.restaurantname !== restaurantname);
 
         if (differentRestaurant) {
@@ -17,7 +16,7 @@ router.post("/order", isAuthenticated, async (req, res) => {
 
             if (clearCart) {
                 // Clear the user's cart
-                await Product.deleteMany({ user: req.user._id });
+                await Product.deleteMany({ user: id });
             } else {
                 // Don't proceed and inform the user about the different restaurant
                 return res.json({
@@ -27,13 +26,13 @@ router.post("/order", isAuthenticated, async (req, res) => {
             }
         }
 
-        let product = await Product.findOne({ user: req.user._id, productname });
+        let product = await Product.findOne({ user: id, productname });
 
         if (!product) {
             // If the product doesn't exist, create a new entry
-           
+
             product = await Product.create({
-                user: req.user._id,
+                user: id,
                 restaurantname,
                 location,
                 productname,
@@ -69,8 +68,8 @@ router.post("/order", isAuthenticated, async (req, res) => {
     }
 });
 
-router.get('/order', isAuthenticated, async (req, res) => {
-    const id = req.user._id;
+router.get('/order/:id', async (req, res) => {
+    const { id } = req.params
 
     try {
         const products = await Product.find({ user: id });
@@ -100,11 +99,11 @@ router.get('/order', isAuthenticated, async (req, res) => {
 
 });
 
-router.delete("/order", isAuthenticated, async (req, res) => {
+router.delete("/order/:id", async (req, res) => {
     try {
-        const userId = req.user._id;
+        const { id } = req.params
 
-        await Product.deleteMany({ user: userId });
+        await Product.deleteMany({ user: id });
 
         res.json({ success: true, message: "All products deleted successfully." });
     } catch (error) {

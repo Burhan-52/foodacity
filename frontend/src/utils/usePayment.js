@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { server } from '../../config';
+import { useNavigate } from 'react-router-dom';
 
 const usePayment = () => {
+    const navigate = useNavigate()
+
+    const [privatekey, setPrivateKey] = useState("")
+
     const checkoutHandler = async (amount) => {
         try {
             const requestOptions = {
@@ -9,7 +14,7 @@ const usePayment = () => {
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
                 body: JSON.stringify({
-                    amount
+                    amount: parseInt(amount)
                 }),
             };
 
@@ -22,16 +27,15 @@ const usePayment = () => {
                 credentials: 'include',
             })
             const key = await apiKey.json();
-            console.log(key.key)
-
+            setPrivateKey(key.key)
 
             const options = {
-                key: "rzp_test_EzdmHFsJFXOsGK",
+                key: privatekey,
                 amount: amount * 100,
                 currency: "INR",
                 name: "foodacity",
                 description: "Successfully integrated Razorpay API",
-                image: "https://avatars.githubusercontent.com/u/25058652?v=4",
+                image: "",
                 order_id: data.order.id, // Access order ID directly from the response data
                 callback_url: `${server}/api/paymentverify`,
                 prefill: {
@@ -44,11 +48,21 @@ const usePayment = () => {
                 },
                 theme: {
                     "color": "#121212"
+                },
+                modal: {
+                    ondismiss: function () {
+                        if (confirm("Are you sure, you want to cancel payment")) {
+                            return navigate("/cart")
+                        } else {
+                            checkoutHandler(amount)
+                        }
+                    }
                 }
             };
 
             const razor = new window.Razorpay(options);
-            razor.open();
+            razor.open()
+
         } catch (error) {
             console.log(error);
         }

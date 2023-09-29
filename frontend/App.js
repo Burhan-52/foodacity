@@ -2,16 +2,15 @@ import React, { lazy, Suspense, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Headercomponenet from "./src/components/Header";
 import Body from "./src/components/Body";
-import { Footer } from "./src/components/Footer"; 
+import { Footer } from "./src/components/Footer";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 import Contact from "./src/components/Contact"
 import Errorpage from "./src/components/Errorpage";
 import Restaurantmenu from "./src/components/Restaurantmenu";
 import Login from "./src/components/Login";
-import { Shimmer } from "./src/components/Shimmer";
 import Help from "./src/components/Help";
 import { Provider, useDispatch } from "react-redux";
-import  store  from "./src/utils/store/store";
+import store from "./src/utils/store/store";
 import Cart from "./src/components/Cart";
 import { Toaster } from "react-hot-toast";
 import Signup from "./src/components/Signup";
@@ -26,12 +25,10 @@ const Applayout = () => {
     return (
         <>
             <Provider store={store}>
-               
-                    <Headercomponenet />
-                    <Outlet />
-                    <Footer />
-                    <Toaster />
-               
+                <Headercomponenet />
+                <Outlet />
+                <Footer />
+                <Toaster />
             </Provider>
         </>
     )
