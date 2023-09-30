@@ -42,7 +42,9 @@ const Signup = () => {
 
             if (data.success) {
                 toast.success(data.message);
-                dispatch(authSuccess(data.newUser))
+                dispatch(authSuccess(data))
+                localStorage.setItem('authToken', data.token);
+                localStorage.setItem('user', JSON.stringify(data));
                 navigate("/")
 
             } else {

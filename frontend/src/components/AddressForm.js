@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast';
 import { server } from '../../config';
 import { useSelector } from 'react-redux';
 
-const AddressForm = () => {
+const AddressForm = ({ setGetAddressData, getAddress }) => {
 
     const user = useSelector((store) => store.auth.user);
 
@@ -32,6 +32,8 @@ const AddressForm = () => {
 
             if (data.success) {
                 toast.success(data.message);
+                setGetAddressData(true)
+                getAddress();
 
             } else {
                 toast.error(data.error);

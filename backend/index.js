@@ -17,17 +17,18 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use(cors({
-    origin: [process.env.FRONTEND_URL],
+    // origin: [process.env.FRONTEND_URL],
+    origin: true,
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
 }))
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-    next();
-});
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Credentials', 'true');
+//     res.setHeader('Access-Control-Allow-Origin', process.env.FRONTEND_URL);
+//     res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//     next();
+// });
 
 connectToMongo()
 

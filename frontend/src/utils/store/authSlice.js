@@ -17,8 +17,8 @@ const authSlice = createSlice({
         },
 
         authSuccess: (state, action) => {
-            if (action.payload && action.payload.existingUser) {
-                const { _id, name, email, img } = action.payload.existingUser;
+            if (action.payload && (action.payload.existingUser || action.payload.newUser)) {
+                const { _id, name, email, img } = action.payload.existingUser ||  action.payload.newUser
                 const { token } = action.payload;
                 const newItem = { _id, name, email, img };
                 state.user = newItem;

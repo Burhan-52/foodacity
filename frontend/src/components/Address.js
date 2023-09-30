@@ -16,10 +16,15 @@ const Address = () => {
     const [checkoutHandler] = usePayment(carttotalcount)
 
     const [getaddress, setGetAddress] = useState([]);
+    console.log(getaddress)
 
     const [deliver, setDeliver] = useState(false)
 
+    const [getaddressdata, setGetAddressData] = useState(false)
+
     const navigate = useNavigate()
+
+    // const [getAddress, setGetAddressData, getaddress] = useGetAddress()
 
     const getAddress = useCallback(async () => {
         try {
@@ -37,7 +42,7 @@ const Address = () => {
         } catch (error) {
             console.log('Error fetching address data:', error.message);
         }
-    }, []);
+    }, [getaddressdata]);
 
     useEffect(() => {
         getAddress();
@@ -64,7 +69,7 @@ const Address = () => {
                     </div>
                 </div>
             ) : (
-                <AddressForm />
+                <AddressForm setGetAddressData={setGetAddressData} getAddress={getAddress} />
 
             )}
         </div>
